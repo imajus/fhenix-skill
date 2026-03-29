@@ -1,77 +1,66 @@
-# FHE AI Assistant 🔐
+# Fhenix FHE Skill
 
-**AI Training Materials for Fully Homomorphic Encryption (FHE) Smart Contract Development using Fhenix**
+AI agent skill that gives Claude expert knowledge of Fully Homomorphic Encryption (FHE) smart contract development on the Fhenix protocol.
 
-Train AI assistants (Claude, ChatGPT, Gemini, etc.) on FHE development patterns using the Fhenix protocol to get expert-level guidance.
+## What It Does
 
-## 🚀 Quick Start (30 seconds)
+When installed, Claude automatically activates this skill when you mention FHE, Fhenix, encrypted contracts, private on-chain computation, or related topics. It provides:
 
-### Essential File
-```
-Load this comprehensive reference into any AI:
-📚 core.md (30KB) - Complete FHE library reference & patterns
-```
+- Complete FHE type system and operation reference
+- Access control patterns (`FHE.allow*`) that are critical for correctness
+- Encrypted conditional logic with `FHE.select`
+- Multi-transaction decryption workflows
+- Common mistakes and debugging guidance
+- Working contract, test, and deployment templates
 
-### AI Platforms
+## Installation
 
-**Claude Code:**
+### Claude Code
+
 ```bash
-claude "Read the fhe-assistant/core.md file and help me build FHE smart contracts using these patterns"
+claude install-skill /path/to/fhenix-skill
 ```
 
-**Other AIs (ChatGPT, Gemini, etc.):**
-Copy-paste the core.md file and say: *"This is FHE reference material. Help me build encrypted smart contracts."*
+Or manually symlink into your project:
 
-## 🎯 Proven AI Prompts
-
-**Code Generation:**
-- *"Build me a [voting/auction/gaming] contract using FHE patterns"*
-- *"Create an encrypted token with private balances"*
-
-**Code Review:**  
-- *"Review this FHE contract against the security checklist"*
-- *"Fix this contract that has FHE access control errors"*
-
-**Learning:**
-- *"Explain FHE access control and show me working examples"*
-- *"Why can't I use ebool in if statements? Show me the right way"*
-
-## 🔑 Key Success Formula
-
-**Essential Mental Model:** *"Without FHE.allow() = passing a locked box without the key!"*
-
-**Built for [Fhenix Protocol](https://www.fhenix.io/):** All patterns use `@fhenixprotocol/contracts` and target Fhenix networks.
-
-1. **Load Core Patterns** → AI understands FHE fundamentals  
-2. **Add Working Examples** → AI sees proper Fhenix implementation
-3. **Ask Specific Questions** → AI applies patterns to your needs
-
-**Result:** AI writes Fhenix-compatible FHE code following security best practices!
-
-## 📁 What's Inside
-
-```
-📚 core.md    → Comprehensive FHE library reference (EVERYTHING YOU NEED)
-📖 README.md  → This quick start guide
+```bash
+ln -s /path/to/fhenix-skill .claude/skills/fhenix-fhe
 ```
 
-**The core.md file includes:**
-- 🔢 All encrypted data types (ebool, euint8-256, eaddress)
-- ➕ Complete operation reference (arithmetic, comparison, logical)
-- 🔐 Access control patterns (FHE.allow*, critical for security)
-- 🔄 Conditional operations (FHE.select - the only way to use ebool)
-- 🔓 Decryption workflows (multi-transaction patterns)
-- 🚨 Common mistakes and debugging guide
-- ✅ Working code templates and examples
+### Other AI Platforms
 
-## 🤝 Community Resources
+Load `references/core.md` directly into the conversation for a comprehensive FHE reference.
 
-- **Discord**: [Fhenix Community](https://discord.gg/FuVgxrvJMY) - Real-time FHE help
-- **Documentation**: [docs.fhenix.zone](https://docs.fhenix.zone) - Official reference
-- **GitHub Issues**: Report AI training improvements or pattern issues
+## Usage
 
----
+Just ask naturally -- the skill triggers automatically:
 
-**🚀 Ready to start?** Load the core files into your AI assistant and start building encrypted smart contracts!
+- "Build me an encrypted voting contract using Fhenix"
+- "Create a private ERC20 token with encrypted balances"
+- "Review this FHE contract for access control issues"
+- "Why am I getting access denied errors on my encrypted values?"
+- "Help me write Foundry tests for my FHE contract"
 
-For detailed examples, advanced configurations, and comprehensive guides, see the individual files above.
+## Structure
+
+```
+SKILL.md              -- Skill definition (loaded when triggered)
+references/
+  core.md             -- Complete FHE API reference (loaded on demand)
+  examples/
+    EncryptedStorage.sol    -- Example contract
+    EncryptedStorage.t.sol  -- Example Foundry tests
+    EncryptedStorage.s.sol  -- Example deployment script
+```
+
+## Key Concept
+
+> Without `FHE.allow()` = passing a locked box without the key!
+
+Every encrypted value needs explicit access grants. This is the #1 source of bugs in FHE contracts.
+
+## Resources
+
+- [Fhenix Documentation](https://docs.fhenix.zone)
+- [Fhenix Discord](https://discord.gg/FuVgxrvJMY)
+- [cofhe-contracts](https://github.com/fhenixprotocol/cofhe-contracts)
